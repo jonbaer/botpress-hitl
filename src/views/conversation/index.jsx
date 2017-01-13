@@ -42,6 +42,10 @@ export default class Conversation extends React.Component {
     var element = this.refs.innerMessages
   }
 
+  togglePaused() {
+    this.props.data.props = !this.props.data.props
+    console.log("ACTION, pause: ", this.props.data.props)
+  }
 
   render() {
     return (
@@ -50,7 +54,9 @@ export default class Conversation extends React.Component {
           <h3>
             {this.props.data.name}
           </h3>
-          
+          <Toggle className={classnames(style.toggle, style.enabled)}
+            defaultChecked={this.props.data.paused}
+            onChange={::this.togglePaused}/>
         </div>
         <div className={style.messages}>
           <div className={style.innerMessages} id="innerMessages" ref="innerMessages">
