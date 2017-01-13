@@ -39,7 +39,8 @@ export default class Conversation extends React.Component {
   }
 
   componentDidMount() {
-    var element = this.refs.innerMessages
+    const messageScrollDiv = this.refs.innerMessages
+    messageScrollDiv.scrollTop = messageScrollDiv.scrollHeight
   }
 
   togglePaused() {
