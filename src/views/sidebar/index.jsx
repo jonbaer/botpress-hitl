@@ -58,6 +58,10 @@ export default class Sidebar extends React.Component {
       color: this.state.filter ? '#56c0b2' : '#666666'
     };
 
+    const dynamicHeightUsersDiv = {
+      height: screen.height - 140
+    }
+
     return (
       <div className={style.sidebar}>
         <div className={style.header}>
@@ -73,7 +77,7 @@ export default class Sidebar extends React.Component {
             </OverlayTrigger>
           </div>
         </div>
-        <div className={style.users}>
+        <div className={style.users} style={dynamicHeightUsersDiv}>
           {this.props.sessions.map(this.renderUser)}
         </div>
       </div>
