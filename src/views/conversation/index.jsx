@@ -12,6 +12,7 @@ export default class Conversation extends React.Component {
     super()
 
     this.state = { loading: true, messages: null }
+    this.appendMessage = ::this.appendMessage
   }
 
   scrollToBottom() {
@@ -20,11 +21,11 @@ export default class Conversation extends React.Component {
   }
 
   componentDidMount() {
-    this.props.bp.events.on('hitl.message', ::this.appendMessage)
+    this.props.bp.events.on('hitl.message', this.appendMessage)
   }
 
   componentWillUnmount() {
-    this.props.bp.events.off('hitl.message', ::this.appendMessage)
+    this.props.bp.events.off('hitl.message', this.appendMessage)
   }
 
   appendMessage(message) {
