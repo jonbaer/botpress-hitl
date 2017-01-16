@@ -86,6 +86,10 @@ export default class Conversation extends React.Component {
         <div className={style.header}>
           <h3>
             {this.props.data && this.props.data.full_name}
+            {this.props.data && !!this.props.data.paused
+              ? <span className={style.pausedWarning}>Paused</span>
+              : null}
+
           </h3>
           <OverlayTrigger placement="left" overlay={pausedTooltip}>
             <div className={style.toggleDiv}>
