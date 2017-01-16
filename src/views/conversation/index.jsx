@@ -1,4 +1,8 @@
 import React from 'react'
+import {
+  Tooltip,
+  OverlayTrigger
+} from 'react-bootstrap'
 import Toggle from 'react-toggle'
 import classnames from 'classnames'
 
@@ -75,15 +79,21 @@ export default class Conversation extends React.Component {
       maxHeight: innerHeight - 260
     }
 
+    const pausedTooltip = <Tooltip id="pausedTooltip">Pause this conversation</Tooltip>
+
     return (
       <div className={style.conversation}>
         <div className={style.header}>
           <h3>
             {this.props.data && this.props.data.full_name}
           </h3>
-          <Toggle className={classnames(style.toggle, style.enabled)}
-            defaultChecked={this.props.data && !!this.props.data.paused}
-            onChange={::this.togglePaused}/>
+          <OverlayTrigger placement="left" overlay={pausedTooltip}>
+            <div className={style.toggleDiv}>
+              <Toggle className={classnames(style.toggle, style.enabled)}
+                defaultChecked={this.props.data && !!this.props.data.paused}
+                onChange={::this.togglePaused}/>
+            </div>
+          </OverlayTrigger>
         </div>
         <div className={style.messages} style={dynamicHeightStyleMessageDiv}>
           <div className={style.innerMessages}

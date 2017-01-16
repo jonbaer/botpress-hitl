@@ -29,11 +29,14 @@
     bottom: 0;
   }
 
-  .toggle {
+  .toggleDiv {
     position: absolute;
     right: 10px;
     top: 18px;
+  }
 
+  .toggle {
+    
     &:global(.react-toggle--checked) {
 
       :global(.react-toggle-thumb) {
